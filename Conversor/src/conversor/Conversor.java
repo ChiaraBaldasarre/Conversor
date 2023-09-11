@@ -20,7 +20,7 @@ public class Conversor {
 	public static double convertirTemperatura(Temperatura origen, Temperatura destino, double cantidad) {
 
 
-		// as
+		// Cambiar Aca :D ^_^! 
 		
 		double valorDestino = destino.multiplicar(cantidad);
 		double valorOrigen = origen.getValor();
