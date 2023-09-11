@@ -36,3 +36,4 @@ replay_pid*
 .metadata/.plugins/org.eclipse.core.resources/.projects/Conversor/org.eclipse.jdt.core/state.dat
 .metadata/.plugins/org.eclipse.core.resources/.history/87/c094d77dbf50001e1a31c51e35e1655b
 .metadata/.log
+*.xmi
