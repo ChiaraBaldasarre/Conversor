@@ -2,4 +2,5 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="clases.Monedas"/>
     <fullyQualifiedTypeName name="clases.Temperatura"/>
+    <fullyQualifiedTypeName name="constantes.ConversorConstantes"/>
 </qualifiedTypeNameHistroy>
