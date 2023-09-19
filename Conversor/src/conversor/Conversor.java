@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import clases.Monedas;
 import clases.Temperatura;
 import constantes.ConstantesTemperaturas;
+import constantes.ConstantesMonedas;
 
 public class Conversor {
 	// ----------------MONEDAS----------------------
@@ -65,12 +66,12 @@ public class Conversor {
 	public static void main(String[] args) {
 
 		// ----------------MONEDAS----------------------
-		Monedas dolar = new Monedas("dolar", "USD", 1);
-		Monedas euro = new Monedas("euro", "EUR", 0.91);
-		Monedas libra = new Monedas("libra", "GBP", 0.79);
-		Monedas yen = new Monedas("yen", "JPY", 144.70);
-		Monedas won = new Monedas("won", "KRW", 1193.13);
-		Monedas peso = new Monedas("peso", "ARS", 349.97);
+		Monedas dolar = new Monedas(ConstantesMonedas.DOLAR, "USD", 1);
+		Monedas euro = new Monedas(ConstantesMonedas.EURO, "EUR", 0.91);
+		Monedas libra = new Monedas(ConstantesMonedas.LIBRA, "GBP", 0.79);
+		Monedas yen = new Monedas(ConstantesMonedas.YEN, "JPY", 144.70);
+		Monedas won = new Monedas(ConstantesMonedas.WON, "KRW", 1193.13);
+		Monedas peso = new Monedas(ConstantesMonedas.PESOS, "ARS", 349.97);
 
 		// ----------------TEMPERATURA----------------------
 		Temperatura celsius = new Temperatura(ConstantesTemperaturas.CELSIUS, ConstantesTemperaturas.C, 0);
