@@ -32,7 +32,35 @@ public class Temperatura {
 		return this.valor / numero;
 	}
 	
-	
+	public double convertirCelsiusAFarenheit(double valor) {
+		return this.valor = (valor * 1.8 + 32); 
+    }
 
-	
+    public double convertirCelsiusAKelvin(double valor) {
+        return this.valor = (valor + 273.15);
+    }
+
+    public double convertirFahrenheitACelsius(double valor) {
+        return this.valor = (valor - 32 ) / 1.8;
+    }
+
+    public double convertirFahrenheitAKelvin(double valor) {
+       
+        return this.valor = (valor - 32) * 5/9  + 273.15;
+    }
+
+    public double convertirKelvinACelsius(double valor) {
+        return this.valor = (valor - 273.15);
+    }
+
+    public double convertirKelvinAFarenheit(double valor) {
+        return this.valor = ((valor - 273.15) * 1.8)  + 32 ;
+    }
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+    
+    
 }

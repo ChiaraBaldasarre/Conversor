@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import clases.Monedas;
 import clases.Temperatura;
+import constantes.ConstantesTemperaturas;
 
 public class Conversor {
 	// ----------------MONEDAS----------------------
@@ -17,16 +18,48 @@ public class Conversor {
 	}
 
 	// ----------------TEMPERATURA----------------------
-	public static double convertirTemperatura(Temperatura origen, Temperatura destino, double cantidad) {
+	public static double convertirTemperatura(Temperatura origen, Temperatura destino) {
 
-
-		// Cambiar Aca :D ^_^! 
 		
-		double valorDestino = destino.multiplicar(cantidad);
-		double valorOrigen = origen.getValor();
-		double resultado = valorDestino / valorOrigen;
-		return resultado;
+		try {
+			switch (origen.getNombre()) {
 
+			case ConstantesTemperaturas.CELSIUS:
+				
+											
+				if (destino.getNombre().equals(ConstantesTemperaturas.FAHRENHEIT)) {
+					return destino.convertirCelsiusAFarenheit(origen.getValor());
+
+				} else if (destino.getNombre().equals(ConstantesTemperaturas.KELVIN) ) {
+					return destino.convertirCelsiusAKelvin(origen.getValor());
+				}
+				break;
+
+			case ConstantesTemperaturas.FAHRENHEIT:
+
+				if (destino.getNombre().equals(ConstantesTemperaturas.CELSIUS)) {
+					return destino.convertirFahrenheitACelsius(origen.getValor());
+
+				} else if (destino.getNombre().equals(ConstantesTemperaturas.KELVIN)) {
+					return destino.convertirFahrenheitAKelvin(origen.getValor());
+				}
+				break;
+
+			case ConstantesTemperaturas.KELVIN:
+				if (destino.getNombre().equals(ConstantesTemperaturas.CELSIUS)) {
+					return destino.convertirKelvinACelsius(origen.getValor());
+
+				} else if (destino.getNombre().equals(ConstantesTemperaturas.FAHRENHEIT)) {
+					return destino.convertirKelvinAFarenheit(origen.getValor());
+				}
+				break;
+			}
+			
+		} catch (Exception e) {
+			throw new IllegalArgumentException(
+					"No se puede convertir de " + origen.getNombre() + " a " + destino.getNombre());
+		}
+		return origen.getValor();
 	}
 
 	public static void main(String[] args) {
@@ -40,9 +73,9 @@ public class Conversor {
 		Monedas peso = new Monedas("peso", "ARS", 349.97);
 
 		// ----------------TEMPERATURA----------------------
-		Temperatura celsius = new Temperatura("celcius", "°C", 1);
-		Temperatura fahrenheit = new Temperatura("farenheit", "°F", 9 / 5);
-		Temperatura kelvin = new Temperatura("kelvin", "K", 273.15);
+		Temperatura celsius = new Temperatura(ConstantesTemperaturas.CELSIUS, ConstantesTemperaturas.C, 0);
+		Temperatura fahrenheit = new Temperatura(ConstantesTemperaturas.FAHRENHEIT, ConstantesTemperaturas.F, 0);
+		Temperatura kelvin = new Temperatura(ConstantesTemperaturas.KELVIN, ConstantesTemperaturas.K, 0);
 
 		boolean repetir = true;
 
@@ -127,7 +160,7 @@ public class Conversor {
 
 			} else if (eleccion == tipo[1]) { // ----------------TEMPERATURA----------------------
 
-				final String[] tiposDeTemperatura = { "°C", "°F", "K" };
+				final String[] tiposDeTemperatura = { ConstantesTemperaturas.C, ConstantesTemperaturas.F, ConstantesTemperaturas.K };
 				String origen = (String) JOptionPane.showInputDialog(null, "Elige la medida que deseas convertir",
 						"Medida actual", JOptionPane.YES_NO_CANCEL_OPTION, null, tiposDeTemperatura, tiposDeTemperatura[0]);
 
@@ -150,35 +183,38 @@ public class Conversor {
 					}
 				}
 
-				Temperatura medida1 = new Temperatura("", "", 0);
+				Temperatura medida1 = new Temperatura(ConstantesTemperaturas.VACIO, ConstantesTemperaturas.VACIO, cantidad);
 
 				switch (origen) {
-				case "°C":
+				case ConstantesTemperaturas.C:
 					medida1 = celsius;
+					medida1.setValor(cantidad);
 					break;
-				case "°F":
+				case ConstantesTemperaturas.F:
 					medida1 = fahrenheit;
+					medida1.setValor(cantidad);
 					break;
-				case "K":
+				case ConstantesTemperaturas.K:
 					medida1 = kelvin;
+					medida1.setValor(cantidad);
 					break;
 				}
 
-				Temperatura medida2 = new Temperatura("", "", 0);
+				Temperatura medida2 = new Temperatura(ConstantesTemperaturas.VACIO, ConstantesTemperaturas.VACIO, 0);
 
-				switch (origen) {
-				case "°C":
+				switch (destino) {
+				case ConstantesTemperaturas.C:
 					medida2 = celsius;
 					break;
-				case "°F":
+				case ConstantesTemperaturas.F:
 					medida2 = fahrenheit;
 					break;
-				case "K":
+				case ConstantesTemperaturas.K:
 					medida2 = kelvin;
 					break;
 				}
 
-				double resultado = convertirTemperatura(medida1, medida2, cantidad);
+ 				double resultado = convertirTemperatura(medida1, medida2);
 				String resultadoFormateado = String.format("%.2f", resultado);
 
 				JOptionPane.showMessageDialog(null, cantidad + " " + origen + " convertidos en " + destino
