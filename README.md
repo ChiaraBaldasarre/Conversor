@@ -7,4 +7,6 @@ Temperatura: celsius, fahrenheit y kelvin.
 
 Es posible la conversión inversa.
 
-Este proyecto fue realizado como parte del programa de ONE (Oracle Next Education) de Oracle y Alura Latam, de capacitación en tecnologías emergentes para jóvenes latinoamericanos. 
+Este proyecto fue realizado como parte del programa de ONE (Oracle Next Education) de Oracle y Alura Latam, de capacitación en tecnologías emergentes para jóvenes latinoamericanos.
+
+#challengeoneconversorlatam5 
